@@ -82,7 +82,7 @@ const QuotationPreview = ({ data }: Props) => {
         {/* Pricing Table */}
         <table className="w-full mb-4 text-sm">
           <thead>
-            <tr style={{ background: 'hsl(220, 70%, 45%)', color: 'white' }}>
+            <tr style={{ background: 'hsl(0, 80%, 45%)', color: 'white' }}>
               <th className="border p-2 text-left w-12">Sr No</th>
               <th className="border p-2 text-left">Product Description</th>
               <th className="border p-2 text-right">Rate Per Unit</th>
