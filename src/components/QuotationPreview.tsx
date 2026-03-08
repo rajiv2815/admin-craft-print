@@ -1,5 +1,5 @@
 import { QuotationData } from "@/types/quotation";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/company-logo.png";
 import sbiLogo from "@/assets/sbi-logo.png";
 
 function numberToWords(num: number): string {
