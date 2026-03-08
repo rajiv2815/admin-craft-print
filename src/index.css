@@ -107,5 +107,37 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+/* PDF print styles */
+.pdf-content {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.pdf-content table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.pdf-content table th,
+.pdf-content table td {
+  border: 1px solid hsl(var(--border));
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.pdf-content table th {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-weight: 600;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
   }
 }
