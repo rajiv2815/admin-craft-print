@@ -154,7 +154,7 @@ const QuotationPreview = ({ data }: Props) => {
         </div>
 
         {/* Banking Details */}
-        <h2 className="text-lg font-bold mb-4" style={{ color: 'hsl(220, 70%, 45%)' }}>Banking Details</h2>
+        <h2 className="text-lg font-bold mb-4" style={{ color: 'hsl(0, 80%, 45%)' }}>Banking Details</h2>
         <div className="flex items-start gap-4 mb-4">
           <img src={sbiLogo} alt="Bank Logo" className="h-12 w-auto object-contain" />
           <table className="text-sm">
