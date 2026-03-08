@@ -134,7 +134,7 @@ const QuotationPreview = ({ data }: Props) => {
       </div>
 
       {/* Page 2 */}
-      <div className="p-8 border-t-2 border-blue-600" style={{ minHeight: '297mm' }}>
+      <div className="p-8 border-t-2" style={{ minHeight: '297mm', borderColor: 'hsl(0, 80%, 45%)' }}>
         {/* Header repeated */}
         <div className="flex items-center justify-between mb-6 border-b-2 pb-4" style={{ borderColor: 'hsl(0, 80%, 45%)' }}>
           <img src={logo} alt="Company Logo" className="h-16 w-auto object-contain" />
