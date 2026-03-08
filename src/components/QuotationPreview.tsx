@@ -63,7 +63,7 @@ const QuotationPreview = ({ data }: Props) => {
         {/* Product Title + Image */}
         <div className="flex items-start gap-6 mb-4">
           <div className="flex-1">
-            <h2 className="text-xl font-bold mb-3" style={{ color: 'hsl(220, 70%, 45%)' }}>{data.productTitle}</h2>
+            <h2 className="text-xl font-bold mb-3" style={{ color: 'hsl(0, 80%, 45%)' }}>{data.productTitle}</h2>
             <h3 className="font-semibold mb-2">Acorn Superglide 130 Specification:</h3>
             <ul className="space-y-1">
               {data.specifications.map((spec, i) => (
