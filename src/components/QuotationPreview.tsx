@@ -32,15 +32,13 @@ const QuotationPreview = ({ data }: Props) => {
       {/* Page 1 */}
       <div className="p-8" style={{ minHeight: '297mm' }}>
         {/* Header */}
-        <div className="flex items-start justify-between mb-6 border-b-2 border-blue-600 pb-4">
-          <div className="flex items-center gap-4">
-            <img src={logo} alt="Company Logo" className="h-20 w-auto object-contain" />
-            <div>
-              <h1 className="text-2xl font-bold" style={{ color: 'hsl(220, 70%, 45%)' }}>{data.companyName}</h1>
-              <p className="text-sm text-gray-600">{data.companyAddress}</p>
-              <p className="text-sm text-gray-600">Call: {data.companyPhone1}, {data.companyPhone2}</p>
-              <p className="text-sm text-gray-600">Email: {data.companyEmail} | Web: {data.companyWeb}</p>
-            </div>
+        <div className="flex items-center justify-between mb-6 border-b-2 pb-4" style={{ borderColor: 'hsl(0, 80%, 45%)' }}>
+          <img src={logo} alt="Company Logo" className="h-20 w-auto object-contain" />
+          <div className="text-right">
+            <h1 className="text-xl font-bold" style={{ color: 'hsl(0, 80%, 45%)' }}>{data.companyName}</h1>
+            <p className="text-sm text-gray-600">{data.companyAddress}</p>
+            <p className="text-sm text-gray-600">Call: {data.companyPhone1}, {data.companyPhone2}</p>
+            <p className="text-sm text-gray-600">Email: {data.companyEmail} | Web: {data.companyWeb}</p>
           </div>
         </div>
 
