@@ -1,5 +1,5 @@
 import { QuotationData } from "@/types/quotation";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/company-logo.png";
 import sbiLogo from "@/assets/sbi-logo.png";
 
 function numberToWords(num: number): string {
@@ -32,15 +32,13 @@ const QuotationPreview = ({ data }: Props) => {
       {/* Page 1 */}
       <div className="p-8" style={{ minHeight: '297mm' }}>
         {/* Header */}
-        <div className="flex items-start justify-between mb-6 border-b-2 border-blue-600 pb-4">
-          <div className="flex items-center gap-4">
-            <img src={logo} alt="Company Logo" className="h-20 w-auto object-contain" />
-            <div>
-              <h1 className="text-2xl font-bold" style={{ color: 'hsl(220, 70%, 45%)' }}>{data.companyName}</h1>
-              <p className="text-sm text-gray-600">{data.companyAddress}</p>
-              <p className="text-sm text-gray-600">Call: {data.companyPhone1}, {data.companyPhone2}</p>
-              <p className="text-sm text-gray-600">Email: {data.companyEmail} | Web: {data.companyWeb}</p>
-            </div>
+        <div className="flex items-center justify-between mb-6 border-b-2 pb-4" style={{ borderColor: 'hsl(0, 80%, 45%)' }}>
+          <img src={logo} alt="Company Logo" className="h-20 w-auto object-contain" />
+          <div className="text-right">
+            <h1 className="text-xl font-bold" style={{ color: 'hsl(0, 80%, 45%)' }}>{data.companyName}</h1>
+            <p className="text-sm text-gray-600">{data.companyAddress}</p>
+            <p className="text-sm text-gray-600">Call: {data.companyPhone1}, {data.companyPhone2}</p>
+            <p className="text-sm text-gray-600">Email: {data.companyEmail} | Web: {data.companyWeb}</p>
           </div>
         </div>
 
@@ -65,7 +63,7 @@ const QuotationPreview = ({ data }: Props) => {
         {/* Product Title + Image */}
         <div className="flex items-start gap-6 mb-4">
           <div className="flex-1">
-            <h2 className="text-xl font-bold mb-3" style={{ color: 'hsl(220, 70%, 45%)' }}>{data.productTitle}</h2>
+            <h2 className="text-xl font-bold mb-3" style={{ color: 'hsl(0, 80%, 45%)' }}>{data.productTitle}</h2>
             <h3 className="font-semibold mb-2">Acorn Superglide 130 Specification:</h3>
             <ul className="space-y-1">
               {data.specifications.map((spec, i) => (
@@ -84,7 +82,7 @@ const QuotationPreview = ({ data }: Props) => {
         {/* Pricing Table */}
         <table className="w-full mb-4 text-sm">
           <thead>
-            <tr style={{ background: 'hsl(220, 70%, 45%)', color: 'white' }}>
+            <tr style={{ background: 'hsl(0, 80%, 45%)', color: 'white' }}>
               <th className="border p-2 text-left w-12">Sr No</th>
               <th className="border p-2 text-left">Product Description</th>
               <th className="border p-2 text-right">Rate Per Unit</th>
@@ -110,7 +108,7 @@ const QuotationPreview = ({ data }: Props) => {
               <td className="border p-2" colSpan={4}>GST {data.gstPercentage}%</td>
               <td className="border p-2 text-right">{gstAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
             </tr>
-            <tr className="font-bold text-base" style={{ background: 'hsl(220, 70%, 45%)', color: 'white' }}>
+            <tr className="font-bold text-base" style={{ background: 'hsl(0, 80%, 45%)', color: 'white' }}>
               <td className="border p-2" colSpan={4}>Total</td>
               <td className="border p-2 text-right">₹{total.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
             </tr>
@@ -121,7 +119,7 @@ const QuotationPreview = ({ data }: Props) => {
 
         {/* Special Notes */}
         <div className="mb-4">
-          <h3 className="font-bold mb-2" style={{ color: 'hsl(220, 70%, 45%)' }}>Special Notes</h3>
+          <h3 className="font-bold mb-2" style={{ color: 'hsl(0, 80%, 45%)' }}>Special Notes</h3>
           <ul className="space-y-1">
             {data.specialNotes.map((note, i) => (
               <li key={i} className="flex items-start gap-2 text-sm">
@@ -136,19 +134,19 @@ const QuotationPreview = ({ data }: Props) => {
       </div>
 
       {/* Page 2 */}
-      <div className="p-8 border-t-2 border-blue-600" style={{ minHeight: '297mm' }}>
+      <div className="p-8 border-t-2" style={{ minHeight: '297mm', borderColor: 'hsl(0, 80%, 45%)' }}>
         {/* Header repeated */}
-        <div className="flex items-center gap-4 mb-6 border-b-2 border-blue-600 pb-4">
+        <div className="flex items-center justify-between mb-6 border-b-2 pb-4" style={{ borderColor: 'hsl(0, 80%, 45%)' }}>
           <img src={logo} alt="Company Logo" className="h-16 w-auto object-contain" />
-          <div>
-            <h1 className="text-xl font-bold" style={{ color: 'hsl(220, 70%, 45%)' }}>{data.companyName}</h1>
+          <div className="text-right">
+            <h1 className="text-xl font-bold" style={{ color: 'hsl(0, 80%, 45%)' }}>{data.companyName}</h1>
             <p className="text-xs text-gray-600">{data.companyAddress}</p>
             <p className="text-xs text-gray-600">Call: {data.companyPhone1}, {data.companyPhone2}</p>
           </div>
         </div>
 
         {/* Gallery */}
-        <h2 className="text-lg font-bold mb-4" style={{ color: 'hsl(220, 70%, 45%)' }}>Acorn Stairlift Photos</h2>
+        <h2 className="text-lg font-bold mb-4" style={{ color: 'hsl(0, 80%, 45%)' }}>Acorn Stairlift Photos</h2>
         <div className="grid grid-cols-2 gap-4 mb-8">
           {data.galleryImages.map((img, i) => (
             <img key={i} src={img} alt={`Stairlift ${i + 1}`} className="w-full h-48 object-cover rounded-lg border" />
@@ -156,7 +154,7 @@ const QuotationPreview = ({ data }: Props) => {
         </div>
 
         {/* Banking Details */}
-        <h2 className="text-lg font-bold mb-4" style={{ color: 'hsl(220, 70%, 45%)' }}>Banking Details</h2>
+        <h2 className="text-lg font-bold mb-4" style={{ color: 'hsl(0, 80%, 45%)' }}>Banking Details</h2>
         <div className="flex items-start gap-4 mb-4">
           <img src={sbiLogo} alt="Bank Logo" className="h-12 w-auto object-contain" />
           <table className="text-sm">
