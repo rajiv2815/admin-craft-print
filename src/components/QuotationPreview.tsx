@@ -108,7 +108,7 @@ const QuotationPreview = ({ data }: Props) => {
               <td className="border p-2" colSpan={4}>GST {data.gstPercentage}%</td>
               <td className="border p-2 text-right">{gstAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
             </tr>
-            <tr className="font-bold text-base" style={{ background: 'hsl(220, 70%, 45%)', color: 'white' }}>
+            <tr className="font-bold text-base" style={{ background: 'hsl(0, 80%, 45%)', color: 'white' }}>
               <td className="border p-2" colSpan={4}>Total</td>
               <td className="border p-2 text-right">₹{total.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
             </tr>
