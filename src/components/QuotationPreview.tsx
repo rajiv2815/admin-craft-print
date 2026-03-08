@@ -136,10 +136,10 @@ const QuotationPreview = ({ data }: Props) => {
       {/* Page 2 */}
       <div className="p-8 border-t-2 border-blue-600" style={{ minHeight: '297mm' }}>
         {/* Header repeated */}
-        <div className="flex items-center gap-4 mb-6 border-b-2 border-blue-600 pb-4">
+        <div className="flex items-center justify-between mb-6 border-b-2 pb-4" style={{ borderColor: 'hsl(0, 80%, 45%)' }}>
           <img src={logo} alt="Company Logo" className="h-16 w-auto object-contain" />
-          <div>
-            <h1 className="text-xl font-bold" style={{ color: 'hsl(220, 70%, 45%)' }}>{data.companyName}</h1>
+          <div className="text-right">
+            <h1 className="text-xl font-bold" style={{ color: 'hsl(0, 80%, 45%)' }}>{data.companyName}</h1>
             <p className="text-xs text-gray-600">{data.companyAddress}</p>
             <p className="text-xs text-gray-600">Call: {data.companyPhone1}, {data.companyPhone2}</p>
           </div>
