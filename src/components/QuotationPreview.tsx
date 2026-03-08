@@ -119,7 +119,7 @@ const QuotationPreview = ({ data }: Props) => {
 
         {/* Special Notes */}
         <div className="mb-4">
-          <h3 className="font-bold mb-2" style={{ color: 'hsl(220, 70%, 45%)' }}>Special Notes</h3>
+          <h3 className="font-bold mb-2" style={{ color: 'hsl(0, 80%, 45%)' }}>Special Notes</h3>
           <ul className="space-y-1">
             {data.specialNotes.map((note, i) => (
               <li key={i} className="flex items-start gap-2 text-sm">
