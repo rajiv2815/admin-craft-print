@@ -237,7 +237,6 @@ const AdminPanel = ({ data, onChange }: Props) => {
                 <Label className="text-xs">Gallery Heading</Label>
                 <Input value={data.galleryTitle} onChange={(e) => update('galleryTitle', e.target.value)} className="h-9" />
               </div>
-            <CardContent>
               <div className="grid grid-cols-2 gap-3 mb-3">
                 {data.galleryImages.map((img, i) => (
                   <div key={i} className="relative group">
