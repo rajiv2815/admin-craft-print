@@ -290,6 +290,19 @@ const AdminPanel = ({ data, onChange }: Props) => {
               </Button>
             </CardContent>
           </Card>
+
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base">Bank Logo</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {data.bankLogo && <img src={data.bankLogo} alt="Bank" className="w-24 h-24 object-contain rounded mb-3 border" />}
+              <input ref={bankLogoRef} type="file" accept="image/*" className="hidden" onChange={handleBankLogoUpload} />
+              <Button variant="outline" size="sm" onClick={() => bankLogoRef.current?.click()}>
+                <Upload className="h-3.5 w-3.5 mr-1" /> {data.bankLogo ? 'Change' : 'Upload'} Logo
+              </Button>
+            </CardContent>
+          </Card>
         </TabsContent>
 
         <TabsContent value="company" className="space-y-4 mt-4">
