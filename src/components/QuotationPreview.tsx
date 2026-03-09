@@ -155,17 +155,15 @@ const QuotationPreview = ({ data }: Props) => {
 
         {/* Banking Details */}
         <h2 className="text-lg font-bold mb-4" style={{ color: 'hsl(0, 80%, 45%)' }}>Banking Details</h2>
-        <div className="flex items-start gap-4 mb-4">
-          <img src={sbiLogo} alt="Bank Logo" className="h-12 w-auto object-contain" />
-          <table className="text-sm">
-            <tbody>
-              <tr><td className="pr-4 font-semibold py-1">Pay to</td><td>{data.payTo}</td></tr>
-              <tr><td className="pr-4 font-semibold py-1">Account Holder</td><td>{data.accountHolder}</td></tr>
-              <tr><td className="pr-4 font-semibold py-1">A/c</td><td>{data.accountNumber}</td></tr>
-              <tr><td className="pr-4 font-semibold py-1">IFSC</td><td>{data.ifsc}</td></tr>
-            </tbody>
-          </table>
-        </div>
+        <table className="text-sm mb-4">
+          <tbody>
+            <tr><td className="pr-4 font-semibold py-1">Bank Name</td><td>{data.bankName}</td></tr>
+            <tr><td className="pr-4 font-semibold py-1">Pay to</td><td>{data.payTo}</td></tr>
+            <tr><td className="pr-4 font-semibold py-1">Account Holder</td><td>{data.accountHolder}</td></tr>
+            <tr><td className="pr-4 font-semibold py-1">A/c</td><td>{data.accountNumber}</td></tr>
+            <tr><td className="pr-4 font-semibold py-1">IFSC</td><td>{data.ifsc}</td></tr>
+          </tbody>
+        </table>
 
         <div className="text-sm space-y-1 mb-6">
           <p><strong>GST:</strong> {data.gstNumber}</p>
