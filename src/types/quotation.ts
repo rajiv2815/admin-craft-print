@@ -35,4 +35,5 @@ export interface QuotationData {
   // Images
   productImage: string | null;
   galleryImages: string[];
+  galleryTitle: string;
 }

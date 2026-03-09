@@ -50,4 +50,5 @@ export const defaultQuotation: QuotationData = {
   panNumber: "BKOPD6215P",
   productImage: productMain,
   galleryImages: [stairlift1, stairlift2, stairlift3, stairlift4],
+  galleryTitle: "Acorn Stairlift Photos",
 };
