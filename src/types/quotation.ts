@@ -6,6 +6,12 @@ export interface LineItem {
   amount: number;
 }
 
+export interface AddOnItem {
+  id: string;
+  name: string;
+  price: number;
+}
+
 export interface QuotationData {
   refNo: string;
   date: string;
@@ -36,4 +42,7 @@ export interface QuotationData {
   productImage: string | null;
   galleryImages: string[];
   galleryTitle: string;
+  bankLogo: string | null;
+  // Add-ons
+  addOnItems: AddOnItem[];
 }

@@ -1,5 +1,6 @@
 import { QuotationData } from "@/types/quotation";
 import logo from "@/assets/company-logo.png";
+import sbiLogo from "@/assets/sbi-logo.png";
 
 
 function numberToWords(num: number): string {
@@ -60,15 +61,15 @@ const QuotationPreview = ({ data }: Props) => {
           <div><span className="font-semibold">State: </span>{data.customerState}</div>
         </div>
 
-        {/* Product Title */}
-        <div className="py-2 px-4 mb-4" style={{ background: 'hsl(0, 80%, 45%)', color: 'white' }}>
+        {/* Product Title - full width red bar */}
+        <div className="flex items-center justify-center py-2 px-4 mb-4" style={{ background: 'hsl(0, 80%, 45%)', color: 'white' }}>
           <h2 className="text-lg font-bold text-center">{data.productTitle}</h2>
         </div>
 
         {/* Specs + Image side by side */}
         <div className="flex items-start gap-6 mb-4">
           <div className="flex-1">
-            <h3 className="font-semibold mb-2">Acorn Superglide 130 Specification:</h3>
+            <h3 className="font-semibold mb-2">{data.productTitle} Specification:</h3>
             <ul className="space-y-1">
               {data.specifications.map((spec, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm">
@@ -83,41 +84,66 @@ const QuotationPreview = ({ data }: Props) => {
           )}
         </div>
 
-        {/* Pricing Table */}
-        <table className="w-full mb-4 text-sm">
+        {/* Pricing Table with borders */}
+        <table className="w-full mb-4 text-sm border-collapse border border-gray-400">
           <thead>
             <tr style={{ background: 'hsl(0, 80%, 45%)', color: 'white' }}>
-              <th className="border p-2 text-left w-12">Sr No</th>
-              <th className="border p-2 text-left">Product Description</th>
-              <th className="border p-2 text-right">Rate Per Unit</th>
-              <th className="border p-2 text-center">Qty</th>
-              <th className="border p-2 text-right">Amount</th>
+              <th className="border border-gray-400 p-2 text-left w-12">Sr No</th>
+              <th className="border border-gray-400 p-2 text-left">Product Description</th>
+              <th className="border border-gray-400 p-2 text-right">Rate Per Unit</th>
+              <th className="border border-gray-400 p-2 text-center">Qty</th>
+              <th className="border border-gray-400 p-2 text-right">Amount</th>
             </tr>
           </thead>
           <tbody>
             {data.lineItems.map((item, idx) => (
               <tr key={item.id}>
-                <td className="border p-2">{idx + 1}</td>
-                <td className="border p-2">{item.description}</td>
-                <td className="border p-2 text-right">{item.ratePerUnit.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
-                <td className="border p-2 text-center">{item.qty}</td>
-                <td className="border p-2 text-right">{item.amount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+                <td className="border border-gray-400 p-2">{idx + 1}</td>
+                <td className="border border-gray-400 p-2">{item.description}</td>
+                <td className="border border-gray-400 p-2 text-right">{item.ratePerUnit.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+                <td className="border border-gray-400 p-2 text-center">{item.qty}</td>
+                <td className="border border-gray-400 p-2 text-right">{item.amount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
               </tr>
             ))}
             <tr className="font-semibold" style={{ background: 'hsl(210, 20%, 96%)' }}>
-              <td className="border p-2" colSpan={4}>Sub Total</td>
-              <td className="border p-2 text-right">{subTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+              <td className="border border-gray-400 p-2" colSpan={4}>Sub Total</td>
+              <td className="border border-gray-400 p-2 text-right">{subTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
             </tr>
-            <tr style={{ background: 'hsl(210, 20%, 96%)' }}>
-              <td className="border p-2" colSpan={4}>GST {data.gstPercentage}%</td>
-              <td className="border p-2 text-right">{gstAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+            <tr className="font-bold" style={{ background: 'hsl(210, 20%, 96%)' }}>
+              <td className="border border-gray-400 p-2 font-bold" colSpan={4}>GST {data.gstPercentage}%</td>
+              <td className="border border-gray-400 p-2 text-right font-bold">{gstAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
             </tr>
             <tr className="font-bold text-base" style={{ background: 'hsl(120, 50%, 35%)', color: 'white' }}>
-              <td className="border p-2" colSpan={4}>Total</td>
-              <td className="border p-2 text-right">₹{total.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+              <td className="border border-gray-400 p-2" colSpan={4}>Total</td>
+              <td className="border border-gray-400 p-2 text-right">₹{total.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
             </tr>
           </tbody>
         </table>
+
+        {/* Extra Add-On */}
+        {data.addOnItems.length > 0 && (
+          <div className="mb-4">
+            <div className="flex items-center justify-center py-2 px-4 mb-2" style={{ background: 'hsl(0, 80%, 45%)', color: 'white' }}>
+              <h3 className="font-bold text-center">Extra Add-On (Optional)</h3>
+            </div>
+            <table className="w-full text-sm border-collapse border border-gray-400">
+              <thead>
+                <tr style={{ background: 'hsl(210, 20%, 96%)' }}>
+                  <th className="border border-gray-400 p-2 text-left">Item</th>
+                  <th className="border border-gray-400 p-2 text-right w-32">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.addOnItems.map((item, idx) => (
+                  <tr key={item.id}>
+                    <td className="border border-gray-400 p-2">{idx + 1}. {item.name}</td>
+                    <td className="border border-gray-400 p-2 text-right">₹{item.price.toLocaleString('en-IN')}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
 
         <p className="text-sm mb-4"><strong>Amount in Words:</strong> {numberToWords(total)}</p>
 
@@ -151,33 +177,40 @@ const QuotationPreview = ({ data }: Props) => {
 
         {/* Gallery */}
         <div className="mb-8">
-          <div className="py-2 px-4 mb-4" style={{ background: 'hsl(0, 80%, 45%)', color: 'white' }}>
+          <div className="flex items-center justify-center py-2 px-4 mb-4" style={{ background: 'hsl(0, 80%, 45%)', color: 'white' }}>
             <h2 className="text-lg font-bold text-center">{data.galleryTitle}</h2>
           </div>
           <div className="grid grid-cols-2 gap-4">
             {data.galleryImages.map((img, i) => (
-              <img key={i} src={img} alt={`Stairlift ${i + 1}`} className="w-full h-56 object-cover rounded-lg border" />
+              <img key={i} src={img} alt={`Stairlift ${i + 1}`} className="w-full h-64 object-cover rounded-lg border" />
             ))}
           </div>
         </div>
 
         {/* Banking Details */}
-        <div className="py-2 px-4 mb-4" style={{ background: 'hsl(0, 80%, 45%)', color: 'white' }}>
+        <div className="flex items-center justify-center py-2 px-4 mb-4" style={{ background: 'hsl(0, 80%, 45%)', color: 'white' }}>
           <h2 className="text-lg font-bold text-center">Banking Details</h2>
         </div>
-        <table className="text-sm mb-4">
-          <tbody>
-            <tr><td className="pr-4 font-semibold py-1">Bank Name</td><td>{data.bankName}</td></tr>
-            <tr><td className="pr-4 font-semibold py-1">Pay to</td><td>{data.payTo}</td></tr>
-            <tr><td className="pr-4 font-semibold py-1">Account Holder</td><td>{data.accountHolder}</td></tr>
-            <tr><td className="pr-4 font-semibold py-1">A/c</td><td>{data.accountNumber}</td></tr>
-            <tr><td className="pr-4 font-semibold py-1">IFSC</td><td>{data.ifsc}</td></tr>
-          </tbody>
-        </table>
+        <div className="flex items-start gap-6 mb-4">
+          {(data.bankLogo || sbiLogo) && (
+            <img src={data.bankLogo || sbiLogo} alt="Bank" className="w-24 h-24 object-contain rounded" />
+          )}
+          <div className="flex-1">
+            <table className="text-sm mb-4">
+              <tbody>
+                <tr><td className="pr-4 font-semibold py-1">Bank Name</td><td>{data.bankName}</td></tr>
+                <tr><td className="pr-4 font-semibold py-1">Pay to</td><td>{data.payTo}</td></tr>
+                <tr><td className="pr-4 font-semibold py-1">Account Holder</td><td>{data.accountHolder}</td></tr>
+                <tr><td className="pr-4 font-semibold py-1">A/c</td><td>{data.accountNumber}</td></tr>
+                <tr><td className="pr-4 font-semibold py-1">IFSC</td><td>{data.ifsc}</td></tr>
+              </tbody>
+            </table>
 
-        <div className="text-sm space-y-1 mb-6">
-          <p><strong>GST:</strong> {data.gstNumber}</p>
-          <p><strong>PAN:</strong> {data.panNumber}</p>
+            <div className="text-sm space-y-1 mb-6">
+              <p><strong>GST:</strong> {data.gstNumber}</p>
+              <p><strong>PAN:</strong> {data.panNumber}</p>
+            </div>
+          </div>
         </div>
 
         <p className="text-sm text-gray-600 italic">For any further details please feel free to ask.</p>

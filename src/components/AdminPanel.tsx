@@ -1,4 +1,4 @@
-import { QuotationData, LineItem } from "@/types/quotation";
+import { QuotationData, LineItem, AddOnItem } from "@/types/quotation";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -16,6 +16,7 @@ interface Props {
 const AdminPanel = ({ data, onChange }: Props) => {
   const productImgRef = useRef<HTMLInputElement>(null);
   const galleryImgRef = useRef<HTMLInputElement>(null);
+  const bankLogoRef = useRef<HTMLInputElement>(null);
 
   const update = <K extends keyof QuotationData>(key: K, value: QuotationData[K]) => {
     onChange({ ...data, [key]: value });
@@ -86,6 +87,22 @@ const AdminPanel = ({ data, onChange }: Props) => {
 
   const addNote = () => update('specialNotes', [...data.specialNotes, '']);
   const removeNote = (idx: number) => update('specialNotes', data.specialNotes.filter((_, i) => i !== idx));
+
+  const updateAddOn = (id: string, field: keyof AddOnItem, value: string | number) => {
+    const items = data.addOnItems.map((item) => item.id === id ? { ...item, [field]: value } : item);
+    update('addOnItems', items);
+  };
+  const addAddOn = () => update('addOnItems', [...data.addOnItems, { id: Date.now().toString(), name: '', price: 0 }]);
+  const removeAddOn = (id: string) => update('addOnItems', data.addOnItems.filter((item) => item.id !== id));
+
+  const handleBankLogoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => update('bankLogo', reader.result as string);
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
     <div className="h-full overflow-y-auto p-4 space-y-4">
@@ -186,6 +203,26 @@ const AdminPanel = ({ data, onChange }: Props) => {
               </div>
             </CardContent>
           </Card>
+
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base">Extra Add-On (Optional)</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {data.addOnItems.map((item) => (
+                <div key={item.id} className="flex items-center gap-2">
+                  <Input value={item.name} onChange={(e) => updateAddOn(item.id, 'name', e.target.value)} placeholder="Item name" className="h-8 text-sm flex-1" />
+                  <Input type="number" value={item.price} onChange={(e) => updateAddOn(item.id, 'price', Number(e.target.value))} placeholder="Price" className="h-8 text-sm w-24" />
+                  <Button variant="ghost" size="icon" className="h-8 w-8 shrink-0" onClick={() => removeAddOn(item.id)}>
+                    <Trash2 className="h-3.5 w-3.5 text-destructive" />
+                  </Button>
+                </div>
+              ))}
+              <Button variant="outline" size="sm" onClick={addAddOn} className="w-full">
+                <Plus className="h-3.5 w-3.5 mr-1" /> Add Item
+              </Button>
+            </CardContent>
+          </Card>
         </TabsContent>
 
         <TabsContent value="products" className="space-y-4 mt-4">
@@ -250,6 +287,19 @@ const AdminPanel = ({ data, onChange }: Props) => {
               <input ref={galleryImgRef} type="file" accept="image/*" className="hidden" onChange={handleGalleryUpload} />
               <Button variant="outline" size="sm" onClick={() => galleryImgRef.current?.click()}>
                 <Upload className="h-3.5 w-3.5 mr-1" /> Add Image
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base">Bank Logo</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {data.bankLogo && <img src={data.bankLogo} alt="Bank" className="w-24 h-24 object-contain rounded mb-3 border" />}
+              <input ref={bankLogoRef} type="file" accept="image/*" className="hidden" onChange={handleBankLogoUpload} />
+              <Button variant="outline" size="sm" onClick={() => bankLogoRef.current?.click()}>
+                <Upload className="h-3.5 w-3.5 mr-1" /> {data.bankLogo ? 'Change' : 'Upload'} Logo
               </Button>
             </CardContent>
           </Card>
