@@ -42,4 +42,7 @@ export interface QuotationData {
   productImage: string | null;
   galleryImages: string[];
   galleryTitle: string;
+  bankLogo: string | null;
+  // Add-ons
+  addOnItems: AddOnItem[];
 }
