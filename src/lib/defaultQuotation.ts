@@ -51,4 +51,11 @@ export const defaultQuotation: QuotationData = {
   productImage: productMain,
   galleryImages: [stairlift1, stairlift2, stairlift3, stairlift4],
   galleryTitle: "Acorn Stairlift Photos",
+  bankLogo: null,
+  addOnItems: [
+    { id: "1", name: "Constant Voltage Transformer (CVT)", price: 6500 },
+    { id: "2", name: "Rust-Proof Racking (4.5 Meters)", price: 10000 },
+    { id: "3", name: "Hinge Rail - Powered", price: 75000 },
+    { id: "4", name: "Lithium Battery", price: 30000 },
+  ],
 };
