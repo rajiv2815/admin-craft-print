@@ -203,6 +203,26 @@ const AdminPanel = ({ data, onChange }: Props) => {
               </div>
             </CardContent>
           </Card>
+
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base">Extra Add-On (Optional)</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {data.addOnItems.map((item) => (
+                <div key={item.id} className="flex items-center gap-2">
+                  <Input value={item.name} onChange={(e) => updateAddOn(item.id, 'name', e.target.value)} placeholder="Item name" className="h-8 text-sm flex-1" />
+                  <Input type="number" value={item.price} onChange={(e) => updateAddOn(item.id, 'price', Number(e.target.value))} placeholder="Price" className="h-8 text-sm w-24" />
+                  <Button variant="ghost" size="icon" className="h-8 w-8 shrink-0" onClick={() => removeAddOn(item.id)}>
+                    <Trash2 className="h-3.5 w-3.5 text-destructive" />
+                  </Button>
+                </div>
+              ))}
+              <Button variant="outline" size="sm" onClick={addAddOn} className="w-full">
+                <Plus className="h-3.5 w-3.5 mr-1" /> Add Item
+              </Button>
+            </CardContent>
+          </Card>
         </TabsContent>
 
         <TabsContent value="products" className="space-y-4 mt-4">
