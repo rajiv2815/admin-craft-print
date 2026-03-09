@@ -156,7 +156,7 @@ const QuotationPreview = ({ data }: Props) => {
           </div>
           <div className="grid grid-cols-2 gap-4">
             {data.galleryImages.map((img, i) => (
-              <img key={i} src={img} alt={`Stairlift ${i + 1}`} className="w-full h-48 object-cover rounded-lg border" />
+              <img key={i} src={img} alt={`Stairlift ${i + 1}`} className="w-full h-56 object-cover rounded-lg border" />
             ))}
           </div>
         </div>
