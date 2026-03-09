@@ -88,6 +88,22 @@ const AdminPanel = ({ data, onChange }: Props) => {
   const addNote = () => update('specialNotes', [...data.specialNotes, '']);
   const removeNote = (idx: number) => update('specialNotes', data.specialNotes.filter((_, i) => i !== idx));
 
+  const updateAddOn = (id: string, field: keyof AddOnItem, value: string | number) => {
+    const items = data.addOnItems.map((item) => item.id === id ? { ...item, [field]: value } : item);
+    update('addOnItems', items);
+  };
+  const addAddOn = () => update('addOnItems', [...data.addOnItems, { id: Date.now().toString(), name: '', price: 0 }]);
+  const removeAddOn = (id: string) => update('addOnItems', data.addOnItems.filter((item) => item.id !== id));
+
+  const handleBankLogoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => update('bankLogo', reader.result as string);
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <div className="h-full overflow-y-auto p-4 space-y-4">
       <Tabs defaultValue="quotation" className="w-full">
