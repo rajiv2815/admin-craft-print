@@ -148,7 +148,7 @@ const AdminPanel = ({ data, onChange }: Props) => {
                     </div>
                     <div>
                       <Label className="text-xs">Amount</Label>
-                      <Input value={item.amount.toLocaleString('en-IN')} disabled className="h-8 text-sm" />
+                      <Input type="number" value={item.amount} onChange={(e) => updateLineItem(item.id, 'amount', Number(e.target.value))} className="h-8 text-sm" />
                     </div>
                   </div>
                 </div>
