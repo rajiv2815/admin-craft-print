@@ -16,6 +16,7 @@ interface Props {
 const AdminPanel = ({ data, onChange }: Props) => {
   const productImgRef = useRef<HTMLInputElement>(null);
   const galleryImgRef = useRef<HTMLInputElement>(null);
+  const bankLogoRef = useRef<HTMLInputElement>(null);
 
   const update = <K extends keyof QuotationData>(key: K, value: QuotationData[K]) => {
     onChange({ ...data, [key]: value });
