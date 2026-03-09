@@ -1,4 +1,4 @@
-import { QuotationData, LineItem } from "@/types/quotation";
+import { QuotationData, LineItem, AddOnItem } from "@/types/quotation";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
