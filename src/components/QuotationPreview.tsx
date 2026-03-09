@@ -60,10 +60,14 @@ const QuotationPreview = ({ data }: Props) => {
           <div><span className="font-semibold">State: </span>{data.customerState}</div>
         </div>
 
-        {/* Product Title + Image */}
+        {/* Product Title */}
+        <div className="py-2 px-4 mb-4" style={{ background: 'hsl(0, 80%, 45%)', color: 'white' }}>
+          <h2 className="text-lg font-bold text-center">{data.productTitle}</h2>
+        </div>
+
+        {/* Specs + Image side by side */}
         <div className="flex items-start gap-6 mb-4">
           <div className="flex-1">
-            <h2 className="text-xl font-bold mb-3" style={{ color: 'hsl(0, 80%, 45%)' }}>{data.productTitle}</h2>
             <h3 className="font-semibold mb-2">Acorn Superglide 130 Specification:</h3>
             <ul className="space-y-1">
               {data.specifications.map((spec, i) => (
@@ -75,7 +79,7 @@ const QuotationPreview = ({ data }: Props) => {
             </ul>
           </div>
           {data.productImage && (
-            <img src={data.productImage} alt="Product" className="w-40 h-auto object-contain rounded" />
+            <img src={data.productImage} alt="Product" className="w-48 h-auto object-contain rounded" />
           )}
         </div>
 
@@ -108,7 +112,7 @@ const QuotationPreview = ({ data }: Props) => {
               <td className="border p-2" colSpan={4}>GST {data.gstPercentage}%</td>
               <td className="border p-2 text-right">{gstAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
             </tr>
-            <tr className="font-bold text-base" style={{ background: 'hsl(0, 80%, 45%)', color: 'white' }}>
+            <tr className="font-bold text-base" style={{ background: 'hsl(120, 50%, 35%)', color: 'white' }}>
               <td className="border p-2" colSpan={4}>Total</td>
               <td className="border p-2 text-right">₹{total.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
             </tr>
@@ -152,7 +156,7 @@ const QuotationPreview = ({ data }: Props) => {
           </div>
           <div className="grid grid-cols-2 gap-4">
             {data.galleryImages.map((img, i) => (
-              <img key={i} src={img} alt={`Stairlift ${i + 1}`} className="w-full h-48 object-cover rounded-lg border" />
+              <img key={i} src={img} alt={`Stairlift ${i + 1}`} className="w-full h-56 object-cover rounded-lg border" />
             ))}
           </div>
         </div>
