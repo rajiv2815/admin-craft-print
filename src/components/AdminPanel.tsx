@@ -230,9 +230,13 @@ const AdminPanel = ({ data, onChange }: Props) => {
 
           <Card>
             <CardHeader className="pb-3">
-              <CardTitle className="text-base">Gallery Images</CardTitle>
+              <CardTitle className="text-base">Gallery</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="space-y-3">
+              <div>
+                <Label className="text-xs">Gallery Heading</Label>
+                <Input value={data.galleryTitle} onChange={(e) => update('galleryTitle', e.target.value)} className="h-9" />
+              </div>
               <div className="grid grid-cols-2 gap-3 mb-3">
                 {data.galleryImages.map((img, i) => (
                   <div key={i} className="relative group">

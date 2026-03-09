@@ -146,15 +146,21 @@ const QuotationPreview = ({ data }: Props) => {
         </div>
 
         {/* Gallery */}
-        <h2 className="text-lg font-bold mb-4" style={{ color: 'hsl(0, 80%, 45%)' }}>Acorn Stairlift Photos</h2>
-        <div className="grid grid-cols-2 gap-4 mb-8">
-          {data.galleryImages.map((img, i) => (
-            <img key={i} src={img} alt={`Stairlift ${i + 1}`} className="w-full h-48 object-cover rounded-lg border" />
-          ))}
+        <div className="mb-8">
+          <div className="py-2 px-4 mb-4" style={{ background: 'hsl(0, 80%, 45%)', color: 'white' }}>
+            <h2 className="text-lg font-bold text-center">{data.galleryTitle}</h2>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            {data.galleryImages.map((img, i) => (
+              <img key={i} src={img} alt={`Stairlift ${i + 1}`} className="w-full h-48 object-cover rounded-lg border" />
+            ))}
+          </div>
         </div>
 
         {/* Banking Details */}
-        <h2 className="text-lg font-bold mb-4" style={{ color: 'hsl(0, 80%, 45%)' }}>Banking Details</h2>
+        <div className="py-2 px-4 mb-4" style={{ background: 'hsl(0, 80%, 45%)', color: 'white' }}>
+          <h2 className="text-lg font-bold text-center">Banking Details</h2>
+        </div>
         <table className="text-sm mb-4">
           <tbody>
             <tr><td className="pr-4 font-semibold py-1">Bank Name</td><td>{data.bankName}</td></tr>
